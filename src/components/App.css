@@ -1,0 +1,54 @@
+button {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;  
+}
+
+.header-option{
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 10px;
+}
+.header-option:not(:first-child){
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 10px;
+  margin-left: 10px;
+}
+
+.subreddit-options-list {
+  list-style-type: none;
+  display: inline;
+  padding-left: 0px;
+}
+.subreddit-options-list li{
+  display: inline;
+  white-space: nowrap;
+}
+.subreddit-options-list li:not(:first-child){
+  display: inline;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+.subreddit-options-list li p{
+  display: inline;
+  white-space: nowrap;
+}
+
+.page-label {
+    display: block;
+    margin: 0 0 0.28571429rem 0;
+    color: rgba(0,0,0,.87);
+    font-size: .92857143em;
+    font-weight: 700;
+    text-transform: none;
+}
+
+.search-term{ margin-top: 10px;}
