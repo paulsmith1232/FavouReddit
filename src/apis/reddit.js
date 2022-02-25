@@ -1,6 +1,6 @@
 // function that makes a fetch request to the Reddit API
  const redditSearch = (subreddit) => {
-  return fetch(`http://www.reddit.com/r/${subreddit}/hot.json?limit=10`)
+  return fetch(`https://www.reddit.com/r/${subreddit}/hot.json?limit=10`)
   .then(res => res.json())
   .then(data =>  {
     let results = data.data.children.map(data => {
@@ -15,7 +15,7 @@
 };
 
 const redditSaves = (posts) => {
-  return fetch(`http://www.reddit.com/by_id/${posts}.json`)
+  return fetch(`https://www.reddit.com/by_id/${posts}.json`)
   .then(res => res.json())
   .then(data =>  {
     let results = data.data.children.map(data =>  data.data)    
