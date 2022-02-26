@@ -1,4 +1,13 @@
-// function that makes a fetch request to the Reddit API
+/*
+* FILE          :   reddit.js
+* PROJECT       :   SENG3080 - Assignment 1
+* PROGRAMMER    :   Paul Smith
+* STUDENT #     :   7964422
+* FIRST VERSION :   2022-02-25
+* DESCRIPTION   :   API call functions for pulling data from reddit.com                 
+*/
+
+// function that makes a fetch request to the Reddit API for subreddit posts
  const redditSearch = (subreddit) => {
   return fetch(`https://www.reddit.com/r/${subreddit}/hot.json?limit=10`)
   .then(res => res.json())
@@ -14,6 +23,7 @@
   });
 };
 
+// function that makes fetch request to the Reddit API for specific posts
 const redditSaves = (posts) => {
   return fetch(`https://www.reddit.com/by_id/${posts}.json`)
   .then(res => res.json())
@@ -24,8 +34,3 @@ const redditSaves = (posts) => {
 }
 
 export {redditSearch, redditSaves};
-
-// if(res.status !== 200){
-//   console.log('could not retrieve')
-//   return []
-// }

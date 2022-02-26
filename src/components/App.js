@@ -1,3 +1,14 @@
+/*
+* FILE          :   index.js
+* PROJECT       :   SENG3080 - Assignment 1
+* PROGRAMMER    :   Paul Smith
+* STUDENT #     :   7964422
+* FIRST VERSION :   2022-02-25
+* DESCRIPTION   :   An app designed to search reddit for subreddit posts
+*                   and allow users to save those posts to local storage. 
+*                   Deployed at:
+*                   https://gracious-meninsky-da392e.netlify.app/                  
+*/
 import React from "react";
 import Home from "./Home";
 import Saved from "./Saved";
@@ -13,7 +24,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    this.updateSaved();
+    this.updateSaved(); // populates the saved posts list
   }
 
   // performs a search on the entered subreddit search term
@@ -22,17 +33,19 @@ class App extends React.Component {
     this.setState({ searchResults: response });    
   }
 
-  // updates the localStorage value and updates the state
+  // updates the localStorage value for post addition
   onSubredditSave = (subreddit) => {
     if (subreddit) localStorage.setItem(subreddit.id, subreddit.name); // checks if subreddit value is not null and stores it locally
     this.updateSaved();
   }
 
+  // updates the localStorage value for post removal
   onSubredditUnsave = (subreddit) => {
     if (subreddit) localStorage.removeItem(subreddit.id); // checks if subreddit value is not null and removes it from the list
     this.updateSaved();
   }
 
+  // handles logic of rendering save/unsave buttons
   saveToggle = (subreddit) => {
     if (localStorage.getItem(subreddit)){
       return true;
@@ -51,6 +64,7 @@ class App extends React.Component {
     return retArray;
   }
 
+  // updates the saved state value with values pulled from localstorage
   updateSaved = async() => {
     const savedList = this.retrieveStorage(); // retrieves newly updated list from storage
 
@@ -66,21 +80,18 @@ class App extends React.Component {
   
       const response = await redditSaves(queryString);   // async function to call the reddit API
       this.setState({ savedPosts: response });
-    }else{
+    } else {
       this.setState({savedPosts: []})
     }
   }
 
+  // handles changing the active view between search and saved mode
   onChangeView = () => {
     if (this.state.activeView === "search"){
       this.setState({activeView: "saved"})
     } else {
       this.setState({activeView: "search"})
     }
-  }
-
-  onPress = () => {
-    console.log(this.state.savedPosts)
   }
   
   render() {
